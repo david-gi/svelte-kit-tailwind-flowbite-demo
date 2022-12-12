@@ -1,0 +1,51 @@
+{
+  "name": "platform",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:browser": "playwright test",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write .",
+    "db:start": "docker-compose -f db/stack.yml up --detach"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.28.1",
+    "@popperjs/core": "^2.11.6",
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "@testing-library/svelte": "^3.2.2",
+    "@types/pg": "^8.6.5",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "autoprefixer": "^10.4.13",
+    "classnames": "^2.3.2",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "flowbite": "^1.5.4",
+    "flowbite-svelte": "^0.28.4",
+    "jsdom": "^20.0.3",
+    "postcss": "^8.4.19",
+    "prettier": "^2.8.0",
+    "prettier-plugin-svelte": "^2.8.1",
+    "svelte": "^3.53.1",
+    "svelte-check": "^2.9.2",
+    "svelte-preprocess": "^4.10.7",
+    "tailwindcss": "^3.2.4",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vitest": "^0.25.3"
+  },
+  "type": "module",
+  "dependencies": {
+    "pg": "^8.8.0"
+  }
+}
