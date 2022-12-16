@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
+    import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte'
 
     const navItems = [
         { href: '/', text: 'Home' },
         { href: '/pokemon', text: 'Pokemon' },
         { href: '/modal', text: 'Modal' }
-    ];
+    ]
 </script>
 
 <Navbar let:hidden let:toggle>

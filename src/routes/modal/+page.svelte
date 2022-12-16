@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Modal from '$src/lib/components/vendor/Modal.svelte';
-    import { Button, P } from 'flowbite-svelte';
-    let defaultModal = false;
+    import Modal from '$src/lib/components/vendor/Modal.svelte'
+    import { Button, P } from 'flowbite-svelte'
+    let defaultModal = false
     const showModal = (): void => {
-        defaultModal = true;
-    };
-    const handleSuccess = (): void => alert('Handle "success"');
+        defaultModal = true
+    }
+    const handleSuccess = (): void => alert('Handle "success"')
 </script>
 
 <Button on:click={showModal}>Prompt for agreement</Button>

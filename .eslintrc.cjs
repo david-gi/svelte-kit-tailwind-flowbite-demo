@@ -33,7 +33,8 @@ module.exports = {
         node: true
     },
     rules: {
-        '@typescript-eslint/explicit-function-return-type': 'error'
+        '@typescript-eslint/explicit-function-return-type': 'error',
+        semi: ['warn', 'never']
     },
     overrides: [
         {
@@ -44,4 +45,4 @@ module.exports = {
             }
         }
     ]
-};
+}

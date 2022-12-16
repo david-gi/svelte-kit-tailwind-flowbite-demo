@@ -1,12 +1,12 @@
 <script lang="ts">
-    import classNames from 'classnames';
-    import { setContext } from 'svelte';
-    import { noop } from 'svelte/internal';
-    import type { Action } from 'svelte/action';
-    import type { TransitionConfig } from 'svelte/transition';
-    setContext('background', true);
-    $: setContext('color', color);
-    export let tag: string = 'div';
+    import classNames from 'classnames'
+    import { setContext } from 'svelte'
+    import { noop } from 'svelte/internal'
+    import type { Action } from 'svelte/action'
+    import type { TransitionConfig } from 'svelte/transition'
+    setContext('background', true)
+    $: setContext('color', color)
+    export let tag: string = 'div'
     export let color:
         | 'gray'
         | 'red'
@@ -23,19 +23,19 @@
         | 'navbar'
         | 'navbarUl'
         | 'form'
-        | 'none' = 'default';
-    export let rounded: boolean = false;
-    export let border: boolean = false;
-    export let shadow: boolean = false;
-    type TransitionFunc = (node: HTMLElement, params: any) => TransitionConfig;
+        | 'none' = 'default'
+    export let rounded: boolean = false
+    export let border: boolean = false
+    export let shadow: boolean = false
+    type TransitionFunc = (node: HTMLElement, params: any) => TransitionConfig
     // Export a prop through which you can set a desired svelte transition
-    export let transition: TransitionFunc | undefined = undefined;
+    export let transition: TransitionFunc | undefined = undefined
     // Pass in extra transition params
-    export let params: object = {};
+    export let params: object = {}
     // For components development
-    export let node: HTMLElement | undefined = undefined;
-    export let use: Action = noop;
-    export let options = {};
+    export let node: HTMLElement | undefined = undefined
+    export let use: Action = noop
+    export let options = {}
     // your script goes here
     const bgColors = {
         gray: 'bg-gray-100 dark:bg-gray-200 ',
@@ -55,7 +55,7 @@
         form: 'bg-gray-50 dark:bg-gray-700',
         primary: 'bg-primary-100 dark:bg-primary-200 ',
         none: ''
-    };
+    }
     const textColors = {
         gray: 'text-gray-700 dark:text-gray-800',
         red: 'text-red-700 dark:text-red-800',
@@ -74,7 +74,7 @@
         form: 'text-gray-900 dark:text-white',
         primary: 'text-primary-700 dark:text-primary-800',
         none: ''
-    };
+    }
     const borderColors = {
         gray: 'border-gray-500 dark:bg-gray-200 ',
         red: 'border-red-500 dark:bg-red-200 ',
@@ -93,8 +93,8 @@
         form: 'border-gray-300 dark:border-gray-700',
         primary: 'border-primary-500 dark:bg-primary-200 ',
         none: ''
-    };
-    let divClass: string;
+    }
+    let divClass: string
     $: divClass = classNames(
         bgColors[color],
         textColors[color],
@@ -103,7 +103,7 @@
         borderColors[color],
         shadow && 'shadow-md',
         $$props.class
-    );
+    )
 </script>
 
 {#if transition}

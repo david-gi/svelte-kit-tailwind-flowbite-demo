@@ -1,13 +1,13 @@
 <script lang="ts">
-    import classNames from 'classnames';
-    import { CloseButton } from 'flowbite-svelte';
-    import Frame from './Frame.svelte';
-    import { createEventDispatcher } from 'svelte';
-    import focusTrap from './focusTrap';
-    import type { SizeType } from 'flowbite-svelte/types';
-    export let open: boolean = false;
-    export let title: string = '';
-    export let size: SizeType = 'md';
+    import classNames from 'classnames'
+    import { CloseButton } from 'flowbite-svelte'
+    import Frame from './Frame.svelte'
+    import { createEventDispatcher } from 'svelte'
+    import focusTrap from './focusTrap'
+    import type { SizeType } from 'flowbite-svelte/types'
+    export let open: boolean = false
+    export let title: string = ''
+    export let size: SizeType = 'md'
     export let placement:
         | 'top-left'
         | 'top-center'
@@ -17,86 +17,86 @@
         | 'center-right'
         | 'bottom-left'
         | 'bottom-center'
-        | 'bottom-right' = 'center';
-    export let autoclose: boolean = false;
-    export let permanent: boolean = false;
-    export let backdropClasses: string = 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80';
-    const dispatch = createEventDispatcher();
-    $: dispatch(open ? 'open' : 'hide');
+        | 'bottom-right' = 'center'
+    export let autoclose: boolean = false
+    export let permanent: boolean = false
+    export let backdropClasses: string = 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80'
+    const dispatch = createEventDispatcher()
+    $: dispatch(open ? 'open' : 'hide')
     function prepareFocus(node: HTMLElement) {
-        const walker = document.createTreeWalker(node, NodeFilter.SHOW_ELEMENT);
-        let n: Node | null;
+        const walker = document.createTreeWalker(node, NodeFilter.SHOW_ELEMENT)
+        let n: Node | null
         while ((n = walker.nextNode())) {
             if (n instanceof HTMLElement) {
-                const el = n as HTMLElement;
-                const [x, y] = isScrollable(el);
-                if (x || y) el.tabIndex = 0;
+                const el = n as HTMLElement
+                const [x, y] = isScrollable(el)
+                if (x || y) el.tabIndex = 0
             }
         }
-        node.focus();
+        node.focus()
     }
     const getPlacementClasses = () => {
         switch (placement) {
             // top
             case 'top-left':
-                return ['justify-start', 'items-start'];
+                return ['justify-start', 'items-start']
             case 'top-center':
-                return ['justify-center', 'items-start'];
+                return ['justify-center', 'items-start']
             case 'top-right':
-                return ['justify-end', 'items-start'];
+                return ['justify-end', 'items-start']
             // center
             case 'center-left':
-                return ['justify-start', 'items-center'];
+                return ['justify-start', 'items-center']
             case 'center':
-                return ['justify-center', 'items-center'];
+                return ['justify-center', 'items-center']
             case 'center-right':
-                return ['justify-end', 'items-center'];
+                return ['justify-end', 'items-center']
             // bottom
             case 'bottom-left':
-                return ['justify-start', 'items-end'];
+                return ['justify-start', 'items-end']
             case 'bottom-center':
-                return ['justify-center', 'items-end'];
+                return ['justify-center', 'items-end']
             case 'bottom-right':
-                return ['justify-end', 'items-end'];
+                return ['justify-end', 'items-end']
             default:
-                return ['justify-center', 'items-center'];
+                return ['justify-center', 'items-center']
         }
-    };
+    }
     const sizes = {
         xs: 'max-w-md',
         sm: 'max-w-lg',
         md: 'max-w-2xl',
         lg: 'max-w-4xl',
         xl: 'max-w-7xl'
-    };
+    }
     const onAutoClose = (e: MouseEvent) => {
-        const target: Element = e.target as Element;
-        if (autoclose && target?.tagName === 'BUTTON') open = false;
-    };
+        const target: Element = e.target as Element
+        if (autoclose && target?.tagName === 'BUTTON') open = false
+    }
     const hide = () => {
-        open = false;
-    };
-    let mainClass: string;
+        open = false
+    }
+    let mainClass: string
     $: mainClass = classNames(
         'flex overflow-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full',
         backdropClasses,
         ...getPlacementClasses()
-    );
-    let frameClass: string;
-    $: frameClass = classNames('relative flex flex-col w-full h-full md:h-auto', $$props.class);
+    )
+    let frameClass: string
+    $: frameClass = classNames('relative flex flex-col w-full h-full md:h-auto', $$props.class)
     const isScrollable = (e: HTMLElement): boolean[] => [
         e.scrollWidth > e.clientWidth &&
             ['scroll', 'auto'].indexOf(getComputedStyle(e).overflowX) >= 0,
         e.scrollHeight > e.clientHeight &&
             ['scroll', 'auto'].indexOf(getComputedStyle(e).overflowY) >= 0
-    ];
+    ]
     function preventWheelDefault(e: Event) {
         // @ts-ignore
-        const [x, y] = isScrollable(this);
-        return x || y || e.preventDefault();
+        const [x, y] = isScrollable(this)
+        return x || y || e.preventDefault()
     }
     function handleKeys(e: KeyboardEvent) {
-        if (e.key === 'Escape' && !permanent) return hide();
+        if (e.key === 'Escape' && !permanent) return hide()
     }
 </script>
 
