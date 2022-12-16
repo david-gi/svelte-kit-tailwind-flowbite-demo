@@ -40,18 +40,21 @@ Choose some of these, according to your strenghts/interests. You don't need to d
   - Additional tasks:
     - The tests coverage is not great. Add tests for some of the relevant edge cases.
       (You can decide how to handle those edge cases.)
-- Render the data from `getPokemon` in the `/pokemon` page as a table.
+
+- [*] Render the data from `getPokemon` in the `/pokemon` page as a table.
   (see https://kit.svelte.dev/docs/load)
   - Additional tasks:
     - Show a card with some statistics. How many pokemon are there of each type?
     - Make the table sortable by clicking column headers.
     - Make the table filterable.
+
 - There is a modal in the `/modal` page.
   Write down some of the accessability issues with that modal as a comment at
   the top of the `+page.svelte` file.
   - Additional tasks:
     - Fix some of the accessability issues
       (in `src/lib/components/vendor/Modal.svelte` and/or in `+page.svelte`).
+
 - We want to monitor how often the `+error.svelte` page is shown.
   Create an endpoint at `/api/monitoring/error` that logs something to the console,
   then call that endpoint from the browser when the error page is shown.
