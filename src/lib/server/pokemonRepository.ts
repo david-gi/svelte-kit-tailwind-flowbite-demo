@@ -1,23 +1,5 @@
 import * as data from './pokedex.json'
-
-export type Pokemon = {
-    id: number
-    name: {
-        english: string
-        japanese: string
-        chinese: string
-        french: string
-    }
-    type: Array<string>
-    base: {
-        HP: number
-        Attack: number
-        Defense: number
-        'Sp. Attack': number
-        'Sp. Defense': number
-        Speed: number
-    }
-}
+import type { Pokemon } from '$src/models/pokemon'
 
 export function getAllPokemon(): Promise<Pokemon[]> {
     // In the real app, this would be a from postgres

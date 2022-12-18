@@ -13,14 +13,6 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "$lib": ["src/lib"],
-      "$src/*": ["src/*"],
-      "$lib/*": ["src/lib/*"],
-      "$routes/*": ["src/routes/*"],
-      "$types/*": ["src/lib/types/*"],
-      "$components/*": ["src/lib/components/*"]
-    }
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //
