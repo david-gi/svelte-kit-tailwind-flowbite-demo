@@ -41,12 +41,19 @@ Choose some of these, according to your strenghts/interests. You don't need to d
     - The tests coverage is not great. Add tests for some of the relevant edge cases.
       (You can decide how to handle those edge cases.)
 
-- [*] Render the data from `getPokemon` in the `/pokemon` page as a table.
+- ### Render the data from `getPokemon` in the `/pokemon` page as a table.
   (see https://kit.svelte.dev/docs/load)
   - Additional tasks:
     - Show a card with some statistics. How many pokemon are there of each type?
     - Make the table sortable by clicking column headers.
     - Make the table filterable.
+    #### Interviewee's Comments
+      - Assuming `getAllPokemon` was meant
+      - Sveltekit did not work as listed in the docs: https://kit.svelte.dev/docs/load
+      | - Had to restart VSCode a few times to get the './$types' to resolve
+      | - Endpoint access via fetch was the only way I found that worked with page data load
+
+  ------
 
 - There is a modal in the `/modal` page.
   Write down some of the accessability issues with that modal as a comment at

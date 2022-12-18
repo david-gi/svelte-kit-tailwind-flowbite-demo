@@ -1,12 +1,21 @@
 <script lang="ts">
-    import { TableHeadCell, TableBodyCell, TableBodyRow, Badge } from 'flowbite-svelte'
-    import BasicTable from '$src/lib/components/common/BasicTable.svelte'
     import type { Pokemon } from '$src/models/pokemon'
+    import BasicTable from '$src/lib/components/common/BasicTable.svelte'
+    import { TableHeadCell, TableBodyCell, TableBodyRow, Badge, Select } from 'flowbite-svelte'
+    import type { SelectOptionType } from 'flowbite-svelte/types'
 
     export let pokemons: Pokemon[]
 
     let selectedType: string
-    let headers = ['Pokemon', 'Attributes']
+    let pokemonTypes: SelectOptionType[] = []
+    pokemons.forEach((p) => {
+        p.type.forEach((t) => {
+            const item = { value: t, name: t }
+            if (!pokemonTypes.includes(item)) {
+                pokemonTypes.push(item)
+            }
+        })
+    })
 
     $: filteredPokemon = selectedType
         ? pokemons.filter((p: Pokemon) => p.type.includes(selectedType))
@@ -15,9 +24,18 @@
 
 <BasicTable hoverable={false} striped={true}>
     <svelte:fragment slot="header">
-        {#each headers as header}
-            <TableHeadCell>{header}</TableHeadCell>
-        {/each}
+        <TableHeadCell>Name</TableHeadCell>
+        <TableHeadCell>
+            <Select
+                id="select-md"
+                underline
+                placeholder="Types"
+                size="sm"
+                items={pokemonTypes}
+                bind:value={selectedType}
+                class="caret-white placeholder-white"
+            />
+        </TableHeadCell>
     </svelte:fragment>
     <svelte:fragment slot="body">
         {#each filteredPokemon as pokemon}
@@ -25,7 +43,7 @@
                 <TableBodyCell>{pokemon.name.english}</TableBodyCell>
                 <TableBodyCell>
                     {#each pokemon.type as type}
-                        <Badge color="green" baseClass="mr-1">{type}</Badge>
+                        <Badge color="indigo" baseClass="mr-1">{type}</Badge>
                     {/each}
                 </TableBodyCell>
             </TableBodyRow>

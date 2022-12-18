@@ -5,7 +5,7 @@
     export let striped: boolean
 </script>
 
-<Table {hoverable} {striped} color="purple">
+<Table {hoverable} {striped} color="default">
     <TableHead>
         <slot name="header" />
     </TableHead>
