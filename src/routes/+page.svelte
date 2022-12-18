@@ -2,4 +2,4 @@
     import { P } from 'flowbite-svelte'
 </script>
 
-<P>Hello world</P>
+<P>Hello Earth</P>
