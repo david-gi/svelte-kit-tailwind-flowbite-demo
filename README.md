@@ -1,10 +1,24 @@
 # Assignment
+Trial run with sveltekit, a little demo from a work assignment (see commits).
+Sveltekit has some neat features and a nice full stack environment for the right scope of project.
 
-- We're not wondering about how you set up a project.
-  We want to see how you work in an existing project.
-- We're not expecting you to spend a huge amount of time on this,
-  so please don't spend more than a couple of hours.
-  We just want to see how you work and have some code to talk about.
+I am/was a bit skeptical to use a complied superset of TypeScript though it's not too invasive.
+I do not generally agree with that approach but it was a pleasant enough dev experience.
+
+Some Pros 'n Cons (+ ~ -):
++ Single language codebase is nice for the right project scope
++ TypeScript positive
+- Single monolithic project could prove tricky to manage at scale
+~ File-first structure is a ittle file-verbose but it does give some implicit organization
+- Still young and the docs and community need time to develop
++ Nice two-way data cascading between children and parents
++ Easy to use component props and emits
++ Page - component structure encourages decoupled and re-uable components
++ Quick route management, for both pages and API
+- Despite single codebase, typing isn't all too fluid from server to client
++ Fairly clean and succinct syntax (beats React and Vue 2 though not so much with Vue 3 + Pinia)
+  - However inline html conditionals aren't the best
++ SSR/Static rendering is fairly straightforward
 
 ## Setup
 
@@ -24,44 +38,4 @@ npm run lint
 
 npm run format
 ```
-
-## Helpful links
-
-[Svelte docs](https://svelte.dev/docs)
-[SvelteKit docs](https://kit.svelte.dev/docs)
-[Tailwind docs](https://tailwindcss.com/docs)
-[Flowbite Svelte docs](https://flowbite-svelte.com/)
-
-## Tasks
-
-Choose some of these, according to your strenghts/interests. You don't need to do all of them.
-
-- There is a failing test in `wordWrap.test.ts` Fix the code that is being tested.
-  - Additional tasks:
-    - The tests coverage is not great. Add tests for some of the relevant edge cases.
-      (You can decide how to handle those edge cases.)
-
-- ### Render the data from `getPokemon` in the `/pokemon` page as a table.
-  (see https://kit.svelte.dev/docs/load)
-  - Additional tasks:
-    - Show a card with some statistics. How many pokemon are there of each type?
-    - Make the table sortable by clicking column headers.
-    - Make the table filterable.
-    #### Interviewee's Comments
-      - Assuming `getAllPokemon` was meant
-      - Sveltekit did not work as listed in the docs: https://kit.svelte.dev/docs/load
-      | - Had to restart VSCode a few times to get the './$types' to resolve
-      | - Endpoint access via fetch was the only way I found that worked with page data load
-
-  ------
-
-- There is a modal in the `/modal` page.
-  Write down some of the accessability issues with that modal as a comment at
-  the top of the `+page.svelte` file.
-  - Additional tasks:
-    - Fix some of the accessability issues
-      (in `src/lib/components/vendor/Modal.svelte` and/or in `+page.svelte`).
-
-- We want to monitor how often the `+error.svelte` page is shown.
-  Create an endpoint at `/api/monitoring/error` that logs something to the console,
-  then call that endpoint from the browser when the error page is shown.
+.
